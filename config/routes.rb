@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
-  #get "/articles", to: "articles#index"
-  #get "/articles/:id", to: "articles#show"
+  get '/articles/', to: "articles#login", as: 'login'
 end

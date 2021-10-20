@@ -1,11 +1,10 @@
-<head>
-  <div id='title'>
-      <p class="text-4xl ...">Articles</p>
-  </div>  
-</head>
+<div class = "m-5 mt-5 ">
+  <h1 class="text-5xl ... inline">Articles</h1>
+  <h1 class="text-2xl ... inline text-right">Login</h1>
+  <%= link_to "Login", login_path %>
+</div>
 
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col">
+<div class="flex flex-col m-5 my-10 border" >
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -55,8 +54,9 @@
                     </span>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <%= link_to 'Edit', article %>
-                    <!--<a href= <%= article %> class="text-indigo-600 hover:text-indigo-900">Edit</a> -->
+                    <div class="text-indigo-600 hover:text-indigo-900">
+                      <%= link_to 'Edit', article %>
+                    </div>
                   </td>
                 </tr>
                 </tr>
@@ -70,6 +70,6 @@
   </div>
 </div>
 
-<div id='title'>
+<div class="text-center mb-5">
       <%= link_to "New Article", new_article_path %>
 </div> 

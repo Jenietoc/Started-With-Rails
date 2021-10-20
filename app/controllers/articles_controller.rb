@@ -6,6 +6,10 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def login
+    puts 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
+  end
+
   def show
     @article = Article.find(params[:id])
   end
