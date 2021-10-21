@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
-  #get "/articles", to: "articles#index"
-  #get "/articles/:id", to: "articles#show"
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
 end
