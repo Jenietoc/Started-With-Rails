@@ -1,13 +1,3 @@
-<div class = "m-5 mt-5 ">
-  <h1 class="text-5xl ... inline">Articles</h1>
-  <div class="text-1xl ... inline text-right">
-      <%= link_to "Login", new_user_session_path %>
-  </div> 
-  <div class="text-1xl ... inline text-right">
-      <%= link_to "Log out", destroy_user_session_path %>
-  </div> 
-</div>
-
 <div class="flex flex-col m-5 my-10 border" >
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -77,3 +67,5 @@
 <div class="text-center mb-5">
       <%= link_to "New Article", new_article_path %>
 </div> 
+
+<%= user = current_user; puts user.email %>
