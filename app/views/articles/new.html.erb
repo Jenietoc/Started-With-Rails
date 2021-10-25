@@ -1,3 +1,1 @@
-<h1>New Article</h1>
-
-<%= render "form", article: @article %>
+<%= render "form", :locals => {:title => 'Edit Article', :title_button => 'Edit', :article => @article}  %>
