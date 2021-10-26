@@ -23,7 +23,13 @@
         <div class= "text-sm lg:flex-grow ">
         <% if user_signed_in? %>
             <div class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              <%= link_to "Home", root_path %>
+            </div>
+            <div class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               <%= link_to "My Articles", root_path %>
+            </div>
+            <div class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              <%= link_to "New Article", new_article_path %>
             </div>
           <% else %>
             <div class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
@@ -45,8 +51,24 @@
     </div>
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <div class="bg-indigo-900 text-center py-4 lg:px-4">
+        <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+          <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
+          <span class="font-semibold mr-2 text-left flex-auto"><%= notice %></span>
+          <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+        </div>
+      </div>
+    <% end %>
+    <% if alert %>
+    <div class="bg-indigo-900 text-center py-4 lg:px-4">
+        <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+          <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">Alert</span>
+          <span class="font-semibold mr-2 text-left flex-auto"><%= alert %></span>
+          <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+        </div>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
