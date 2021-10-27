@@ -30,7 +30,7 @@
                           </div>
                           <div class="ml-4">
                               <div class="text-indigo-600 hover:text-indigo-900">
-                                <%= link_to article.user.username, user_profile_path(article.user) %>
+                                <%= link_to article.user.username, user_path(article.user.id) %>
                               </div>
                               <div class="text-sm text-gray-500">
                                 <%= article.user.email %>
@@ -62,7 +62,7 @@
                       </div>
                       <div class="ml-4">
                           <div class="text-indigo-600 hover:text-indigo-900">
-                            <%= link_to article.user.username, user_profile_path(article.user) %>
+                            <%= link_to article.user.username, user_path(article.user.id) %>
                           </div>
                           <div class="text-sm text-gray-500">
                             <%= article.user.email %>
