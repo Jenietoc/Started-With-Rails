@@ -7,4 +7,6 @@ Rails.application.routes.draw do
    sessions: 'users/sessions',
    registrations: 'users/registrations'
   }
+  get 'articles/user/:user_id', to: 'articles#from_author', as: 'article_from_user'
+  get 'users/user/:user_id', to: 'users#profile', as: 'user_profile'
 end

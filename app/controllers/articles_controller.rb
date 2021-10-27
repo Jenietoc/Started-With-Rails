@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   
   #http_basic_authenticate_with name: "jenietoc", password: "secret", except: [:index, :show]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :delete, :from_author]
 
   def index
     @articles = Article.all
@@ -16,18 +16,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(articles_params)
-    if @article.save
-      puts @article.errors.full_messages
-      redirect_to @article
-    else
-      #render :new
-    end
-
-    @article = Article.create(title: params[:article][:title],
-                              body: params[:article][:body],
-                              status: params[:article][:status],
-                              user: current_user)
+    @article = current_user.articles.create(articles_params)
     redirect_to @article
   end
 
@@ -50,9 +39,13 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def from_author
+    @user = User.find(params[:user_id])
+  end
+
   private
 
   def articles_params
-    params.require(:article).permit(:title, :body, :status, :user_id)
+    params.require(:article).permit(:title, :body, :status)
   end
 end
