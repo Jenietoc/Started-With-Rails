@@ -1,11 +1,12 @@
-<% if @rel.present? %>
-    <%= link_to 'Unfollow', relationship_path(@rel), 
-    method: :delete, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-1 rounded'%>
+<% unless current_user.id == @user.id %>
+    <% if @rel.present? %>
+        <%= link_to 'Unfollow', relationship_path(@rel), 
+        method: :delete, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-1 rounded'%>
+    <% end %>
+    <% unless @rel.present? %>
+        <%= link_to 'Follow', user_relationships_path(@user), 
+        method: :post, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-1 rounded'%>
+    <% end %>
 <% end %>
-<% unless @rel.present? %>
-    <%= link_to 'Follow', user_relationships_path(@user), 
-    method: :post, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-1 rounded'%>
-<% end %>
-
 <h2> Followers: <%= @user.followers.count %> </h2>
 <h2> Following: <%= @user.following.count %> </h2>

@@ -1,17 +1,27 @@
-<div class= 'text-center tracking-tight'>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.user.username %>
-  </p>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-  <div class="text-sm text-blue-600 hover:underline mt-1">
-    <p>
-      <%= link_to 'Destroy Comment', [comment.article, comment],
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-    </p>
+<% unless comment.body.nil? %>
+  <div class= 'text-center tracking-tight'>
+    <div class="bg-white p-2 pt-4 rounded">
+        <div class="flex ml-3">
+          <div class="mr-3">
+            <img src="http://picsum.photos/50" alt="" class="rounded-full">
+          </div>
+          <div class="flex items-center">
+            <a> <%= link_to comment.user.username, user_path(comment.user.id), class:'mx-2 text-gray-700 font-semibold hover:underline' %> </a>
+            <span class="mx-1 text-gray-600 text-xs"> <%= comment.created_at.strftime('%m/%d/%Y') %> </span>
+          </div>
+        </div> 
+        <div class="mt-3 w-full, text-left">
+          <h1 class= "border p-2 rounded w-full overflow-auto h-20 ..." > <%= comment.body %> </h1>
+        </div>
+        <% if current_user == comment.user %>
+          <div class="text-sm text-blue-600 hover:underline mt-1">
+            <p>
+              <%= link_to 'Delete', [comment.article, comment],
+                                              method: :delete,
+                                              data: { confirm: "Are you sure?" } %>
+            </p>
+          </div>
+        <% end %>
+    </div>
   </div>
-</div>
+<% end %>

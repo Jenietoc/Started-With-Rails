@@ -1,8 +1,10 @@
 <%= form_with model: locals[:article] do |form| %>
-  <div class="flex items-center justify-center min-h-screen bg-gray-300">
-    <div class="card bg-white max-w-md p-10 md:rounded-lg my-1 mx-auto">
-      <h1 class='text-center font-bold mb-2'> <%= locals[:title] %> </h1>
-      <div class="form mt-4">
+  <section class="max-w-3xl mx-auto mb-12">
+    <div class="bg-white lg:shadow-lg lg:rounded-lg">
+      <div class="mb-2 mt-5 text-center">
+        <h1 class='font-bold'> <%= locals[:title] %> </h1>
+      </div>
+      <div class='p-6'>
         <div class="flex flex-col text-sm">
           <label for="title" class="font-bold mb-2">Title</label>
           <%= form.text_field :title, class:" appearance-none border border-gray-200 p-2 focus:outline-none focus:border-gray-500",
@@ -18,17 +20,15 @@
           <% locals[:article].errors.full_messages_for(:body).each do |message| %>
             <div><%= message %></div>
           <% end %>
-        </div>
-      </div>
-      <div class="options md:flex md:space-x-6 text-sm items-center text-gray-700 mt-4">
-        <p class="w-1/2 mb-2 md:mb-0"> Status </p>
-        <div>
+        </div>   
+        <div class="options md:flex md:space-x-6 text-sm items-center text-gray-700 mt-4">
+          <h1 class='mb-2 font-bold'> Status </h1>
           <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class:"w-full border bg-white rounded px-3 py-2 outline-none" %>
+        </div>   
+        <div class='text-center'>
+          <button class="px-6 py-2 mt-5 mb-5 text-white bg-blue-600 rounded-lg hover:bg-blue-900"> <%= locals[:title_button] %> </button>
         </div>
-      </div>   
-      <div class="flex items-baseline justify-between">
-        <button class="px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"> <%= locals[:title_button] %> </button>
       </div>
     </div>
-  </div>
+  </section>
 <% end %>
