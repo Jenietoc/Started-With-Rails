@@ -1,15 +1,24 @@
-<h1 class = 'mt-5 mb-5 text-center font-semibold text-xl tracking-tight'><%= @article.title %></h1>
-<div class= 'mr-20 ml-20'>
-  <div class = 'bg-indigo-500 text-black font-bold rounded-lg p-8 mt-1'>
-    <p> <%= @article.body %> </p>
+<section class="max-w-3xl mx-auto mb-12">
+  <div class="bg-white lg:flex lg:shadow-lg lg:rounded-lg">
+    <div class="p-12 text-center">
+      <h2 class="text-2xl text-gray-800 font-bold md:text-3xl"> <%= @article.title %> </h2>
+      <p class="mt-4 text-gray-600 text-left"> <%= @article.body %> </p>
+      <div class="mt-2 mb-10 text-sm text-gray-500">
+        <h1 class='text-left mx-2 text-gray-700 font-semibold '>By: <%= link_to @article.user.username, user_path(@article.user.id), class:'hover:underline' %> </h1>
+        <h1 class="text-right"> <%= @article.created_at.strftime('%m/%d/%Y') %> </h1>
+      </div>
+      <% if (@article.user.followers.find_by(follower: current_user)) != nil || @article.user == current_user %>
+        <%= render 'comments/form' %>
+      <% end %>
+      <% if @article.comments.count > 0 %>
+        <div>
+          <h2 class = 'mt-5 mb-5 text-center font-semibold text-xl tracking-tight'>Comments</h2>
+          <%= render @article.comments %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <h1 class = 'text-left text-sm text-gray-500'>Author: <%= @article.user.username %> </h1>
-</div>
-
-<h2 class = 'mt-5 mb-5 text-center font-semibold text-xl tracking-tight'>Comments</h2>
-<%= render @article.comments %>
-<h2 class = 'mt-5 mb-5 text-center font-semibold text-xl tracking-tight'>Add a comment:</h2>
-<%= render 'comments/form' %>
+</section>
 <% if current_user == @article.user %>
   <ul>
     <li><%= link_to "Edit", edit_article_path(@article) %></li>

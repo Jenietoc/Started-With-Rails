@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_10_27_164753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.bigint "user_id"
+    t.bigint "user_id", default: 1, null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_10_27_164753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.bigint "user_id"
+    t.bigint "user_id", default: 1, null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
