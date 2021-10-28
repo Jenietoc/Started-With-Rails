@@ -7,6 +7,13 @@
         <h1 class='text-left mx-2 text-gray-700 font-semibold '>By: <%= link_to @article.user.username, user_path(@article.user.id), class:'hover:underline' %> </h1>
         <h1 class="text-right"> <%= @article.created_at.strftime('%m/%d/%Y') %> </h1>
       </div>
+      <div class="mt-1 mb-10 justify-between">
+        <% if current_user == @article.user %>
+          <a> <%= link_to "Edit", edit_article_path(@article), class:'mx-2 text-gray-700 font-semibold hover:underline' %> </a>
+          <a> <%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, 
+          class:'mx-2 text-gray-700 font-semibold hover:underline' %> </a>
+        <% end %>
+      </div>
       <% if (@article.user.followers.find_by(follower: current_user)) != nil || @article.user == current_user %>
         <%= render 'comments/form' %>
       <% end %>
@@ -19,11 +26,3 @@
     </div>
   </div>
 </section>
-<% if current_user == @article.user %>
-  <ul>
-    <li><%= link_to "Edit", edit_article_path(@article) %></li>
-    <li><%= link_to "Destroy", article_path(@article),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %></li>
-  </ul>
-<% end %>
